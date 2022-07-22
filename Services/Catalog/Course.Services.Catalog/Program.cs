@@ -1,4 +1,6 @@
-namespace Course.Services.Catalog
+using Courses.Services.Catalog.Settings;
+
+namespace Courses.Services.Catalog
 {
     public class Program
     {
@@ -12,6 +14,13 @@ namespace Course.Services.Catalog
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            // Automapper settings
+            builder.Services.AddAutoMapper(typeof(Program));
+            
+            // AppSetting Reading
+            builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("DatabaseSettings"));
+            builder.Services.AddSingleton<IDatabaseSettings>(sp => sp.GetRequiredService<Microsoft.Extensions.Options.IOptions<DatabaseSettings>>().Value);
 
             var app = builder.Build();
 

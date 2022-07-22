@@ -1,4 +1,4 @@
-﻿namespace Course.Services.Catalog.Dtos
+﻿namespace Courses.Services.Catalog.Dtos
 {
     public class CourseCreateDto
     {

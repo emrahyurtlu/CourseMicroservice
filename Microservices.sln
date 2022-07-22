@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{7E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{2A767A05-D36E-477B-97AF-29DD729304D2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Course.Services.Catalog", "Services\Catalog\Course.Services.Catalog\Course.Services.Catalog.csproj", "{4D152E9A-19A5-4F83-820D-36EDB92A632E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Courses.Services.Catalog", "Services\Catalog\Course.Services.Catalog\Courses.Services.Catalog.csproj", "{4D152E9A-19A5-4F83-820D-36EDB92A632E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{2A2642E4-D6A3-4CF2-8770-AA7D16B66F3D}"
 EndProject

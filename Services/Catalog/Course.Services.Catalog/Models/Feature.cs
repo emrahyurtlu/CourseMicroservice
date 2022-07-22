@@ -1,6 +1,6 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 
-namespace Course.Services.Catalog.Models
+namespace Courses.Services.Catalog.Models
 {
     public class Feature
     {
