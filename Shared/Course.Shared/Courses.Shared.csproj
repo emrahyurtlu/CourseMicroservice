@@ -7,4 +7,13 @@
     <AssemblyName>Course.Shared</AssemblyName>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="ControllerBases\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ControllerBases\" />
+  </ItemGroup>
+  <ItemGroup>
+      <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
 </Project>

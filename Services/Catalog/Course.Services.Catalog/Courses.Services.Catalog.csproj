@@ -19,6 +19,7 @@
     <PackageReference Include="MongoDB.Driver" Version="2.17.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,6 +34,7 @@
     <None Remove="Mapping\" />
     <None Remove="Settings\" />
     <None Remove="Services\" />
+    <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Shared\Course.Shared\Courses.Shared.csproj">
