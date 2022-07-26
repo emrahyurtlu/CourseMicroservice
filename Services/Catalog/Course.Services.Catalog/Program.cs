@@ -1,3 +1,4 @@
+using Courses.Services.Catalog.Services;
 using Courses.Services.Catalog.Settings;
 
 namespace Courses.Services.Catalog
@@ -21,6 +22,9 @@ namespace Courses.Services.Catalog
             // AppSetting Reading
             builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("DatabaseSettings"));
             builder.Services.AddSingleton<IDatabaseSettings>(sp => sp.GetRequiredService<Microsoft.Extensions.Options.IOptions<DatabaseSettings>>().Value);
+
+            // Dependency Injection
+            builder.Services.AddScoped<ICategoryService, CategoryService>();
 
             var app = builder.Build();
 
