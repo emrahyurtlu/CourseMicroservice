@@ -1,5 +1,4 @@
-﻿using System;
-using Courses.Services.Catalog.Dtos;
+﻿using Courses.Services.Catalog.Dtos;
 using Courses.Services.Catalog.Models;
 using Courses.Shared.Dtos;
 
@@ -9,7 +8,7 @@ namespace Courses.Services.Catalog.Services
     {
         Task<Response<List<CourseDto>>> GetAllAsync();
 
-        Task<Response<CourseDto>> CreateAsync(Course category);
+        Task<Response<CourseDto>> CreateAsync(Course course);
 
         Task<Response<CourseDto>> GetByIdAsync(string id);
 

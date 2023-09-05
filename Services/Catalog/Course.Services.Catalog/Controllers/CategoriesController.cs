@@ -1,12 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Courses.Services.Catalog.Dtos;
-using Courses.Services.Catalog.Models;
 using Courses.Services.Catalog.Services;
 using Courses.Shared.ControllerBases;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Courses.Services.Catalog.Controllers
@@ -23,7 +17,8 @@ namespace Courses.Services.Catalog.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(string id) {
+        public async Task<IActionResult> GetById(string id)
+        {
             var response = await _categoryService.GetByIdAsync(id);
 
             return CreateActionResultInstance(response);

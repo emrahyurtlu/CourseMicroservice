@@ -24,9 +24,10 @@ namespace Courses.Services.Catalog.Services
             _mapper = mapper;
         }
 
-        public async Task<Response<CourseDto>> CreateAsync(Course category)
+        public async Task<Response<CourseDto>> CreateAsync(Course course)
         {
-            throw new NotImplementedException();
+            await _courseCollection.InsertOneAsync(course);
+            return Response<CourseDto>.Success(_mapper.Map<CourseDto>(course), 200);
         }
 
         public async Task<Response<List<CourseDto>>> GetAllAsync()

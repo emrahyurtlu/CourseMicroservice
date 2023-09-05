@@ -1,20 +1,20 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using Courses.Services.Catalog.Dtos;
 using Courses.Services.Catalog.Models;
 
 namespace Courses.Services.Catalog.Mapping
 {
-    public class GeneralMapping: Profile
+    public class GeneralMapping : Profile
     {
         public GeneralMapping()
         {
-            CreateMap<Courses.Services.Catalog.Models.Course, CourseDto>().ReverseMap();
+            // Conversion is from Course => CourseDto and vise versa with the help of ReverseMap()
+            CreateMap<Course, CourseDto>().ReverseMap();
             CreateMap<Category, CategoryDto>().ReverseMap();
             CreateMap<Feature, FeatureDto>().ReverseMap();
 
-            CreateMap<Courses.Services.Catalog.Models.Course, CourseCreateDto>().ReverseMap();
-            CreateMap<Courses.Services.Catalog.Models.Course, CourseUpdateDto>().ReverseMap();
+            CreateMap<Course, CourseCreateDto>().ReverseMap();
+            CreateMap<Course, CourseUpdateDto>().ReverseMap();
         }
     }
 }

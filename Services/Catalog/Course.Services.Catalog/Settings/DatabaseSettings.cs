@@ -1,9 +1,12 @@
-﻿using System;
-namespace Courses.Services.Catalog.Settings
+﻿namespace Courses.Services.Catalog.Settings
 {
-    public class DatabaseSettings: IDatabaseSettings
+    /*
+        Reaching setttings over a class is
+        called as Options Pattern
+        IOptions<DatabaseSettings> options injected on constructor
+    */
+    public class DatabaseSettings : IDatabaseSettings
     {
-
         public string CourseCollectionName { get; set; }
         public string CategoryCollectionName { get; set; }
         public string ConnectionString { get; set; }
