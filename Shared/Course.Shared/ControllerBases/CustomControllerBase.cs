@@ -1,5 +1,4 @@
-﻿using System;
-using Courses.Shared.Dtos;
+﻿using Courses.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
 namespace Courses.Shared.ControllerBases
 {

@@ -1,8 +1,8 @@
-﻿ using AutoMapper;
+﻿using AutoMapper;
 using Courses.Services.Catalog.Dtos;
 using Courses.Services.Catalog.Models;
 using Courses.Services.Catalog.Settings;
-using Courses.Shared.Dtos;
+using Courses.Shared.Models;
 using MongoDB.Driver;
 
 namespace Courses.Services.Catalog.Services

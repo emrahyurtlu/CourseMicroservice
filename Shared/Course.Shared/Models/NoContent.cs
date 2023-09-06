@@ -1,4 +1,4 @@
-﻿namespace Courses.Shared.Dtos
+﻿namespace Courses.Shared.Models
 {
     public class NoContent
     {

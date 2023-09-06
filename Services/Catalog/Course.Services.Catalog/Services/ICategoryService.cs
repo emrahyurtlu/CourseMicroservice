@@ -1,7 +1,7 @@
 ﻿using System;
 using Courses.Services.Catalog.Dtos;
 using Courses.Services.Catalog.Models;
-using Courses.Shared.Dtos;
+using Courses.Shared.Models;
 
 namespace Courses.Services.Catalog.Services
 {
