@@ -58,8 +58,8 @@ namespace Course.IdentityServer
                     {
                         userManager.CreateAsync(new ApplicationUser
                         {
-                            UserName = "emrahyurtlu",
-                            Email = "emrah@domain.com",
+                            UserName = "test_user",
+                            Email = "test_user@domain.com",
                             City = "Ankara"
                         }, "Password12*").Wait();
                     }

@@ -6,14 +6,14 @@ using IdentityServer4;
 using IdentityServer4.Models;
 using System.Collections.Generic;
 
-namespace Course.IdentityServer
+namespace Course.IdentityServerZ
 {
     public static class Config
     {
         public static IEnumerable<ApiResource> ApiResources => new ApiResource[]
         {
             new ApiResource("resource_catalog") {Scopes = { "catalog_fullpermission" }},
-            new ApiResource("photo_stock_catalog") {Scopes = { "photo_stock_fullpermission" }},
+            new ApiResource("resource_photo_stock") {Scopes = { "photo_stock_fullpermission" }},
             new ApiResource(IdentityServerConstants.LocalApi.ScopeName),
         };
 
@@ -33,15 +33,33 @@ namespace Course.IdentityServer
         {
             new Client
             {
-                ClientName = "Asp.Net Core Mvc",
-                ClientId = "WebMvcClient",
-                ClientSecrets =
-                {
-                    new Secret("secret".Sha256())
-                },
-                AllowedGrantTypes = GrantTypes.ClientCredentials,
-                AllowedScopes = { "catalog_fullpermission", "photo_stock_fullpermission", IdentityServerConstants.LocalApi.ScopeName }
-            }
+                ClientName="Asp.Net Core MVC",
+                ClientId="WebMvcClient",
+                ClientSecrets= {new Secret("secret".Sha256())},
+                AllowedGrantTypes= GrantTypes.ClientCredentials,
+                AllowedScopes={ "catalog_fullpermission","photo_stock_fullpermission", "gateway_fullpermission", IdentityServerConstants.LocalApi.ScopeName }
+            },
+            //new Client
+            //{
+            //    ClientName="Asp.Net Core MVC",
+            //    ClientId="WebMvcClientForUser",
+            //    AllowOfflineAccess=true,
+            //    ClientSecrets= {new Secret("secret".Sha256())},
+            //    AllowedGrantTypes= GrantTypes.ResourceOwnerPassword,
+            //    AllowedScopes={ "basket_fullpermission", "order_fullpermission", "gateway_fullpermission", IdentityServerConstants.StandardScopes.Email, IdentityServerConstants.StandardScopes.OpenId,IdentityServerConstants.StandardScopes.Profile, IdentityServerConstants.StandardScopes.OfflineAccess, IdentityServerConstants.LocalApi.ScopeName,"roles" },
+            //    AccessTokenLifetime=1*60*60,
+            //    RefreshTokenExpiration=TokenExpiration.Absolute,
+            //    AbsoluteRefreshTokenLifetime= (int) (DateTime.Now.AddDays(60)- DateTime.Now).TotalSeconds,
+            //    RefreshTokenUsage= TokenUsage.ReUse
+            //},
+            //new Client
+            //{
+            //    ClientName="Token Exchange Client",
+            //    ClientId="TokenExhangeClient",
+            //    ClientSecrets= {new Secret("secret".Sha256())},
+            //    AllowedGrantTypes= new []{ "urn:ietf:params:oauth:grant-type:token-exchange" },
+            //    AllowedScopes={ "discount_fullpermission", "payment_fullpermission", IdentityServerConstants.StandardScopes.OpenId }
+            //},
         };
     }
 }
