@@ -15,6 +15,7 @@ namespace Course.IdentityServerZ
         {
             new ApiResource("resource_catalog") {Scopes = { "catalog_fullpermission" }},
             new ApiResource("resource_photo_stock") {Scopes = { "photo_stock_fullpermission" }},
+            new ApiResource("resource_basket") {Scopes = { "basket_fullpermission" }},
             new ApiResource(IdentityServerConstants.LocalApi.ScopeName),
         };
 
@@ -31,6 +32,7 @@ namespace Course.IdentityServerZ
         {
             new ApiScope("catalog_fullpermission", "Full access for catalog api"),
             new ApiScope("photo_stock_fullpermission", "Full access for photo api"),
+            new ApiScope("basket_fullpermission", "Full access for basket api"),
             new ApiScope(IdentityServerConstants.LocalApi.ScopeName),
         };
 
@@ -42,7 +44,13 @@ namespace Course.IdentityServerZ
                 ClientId="WebMvcClient",
                 ClientSecrets= {new Secret("secret".Sha256())},
                 AllowedGrantTypes= GrantTypes.ClientCredentials,
-                AllowedScopes={ "catalog_fullpermission","photo_stock_fullpermission", "gateway_fullpermission", IdentityServerConstants.LocalApi.ScopeName }
+                AllowedScopes={
+                    "catalog_fullpermission",
+                    "photo_stock_fullpermission",
+                    "basket_fullpermission",
+                    "gateway_fullpermission",
+                    IdentityServerConstants.LocalApi.ScopeName
+                }
             },
             new Client
             {
