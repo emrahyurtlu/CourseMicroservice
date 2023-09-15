@@ -24,7 +24,7 @@ namespace Course.IdentityServerZ
                        new IdentityResources.OpenId(),
                        new IdentityResources.Email(),
                        new IdentityResources.Profile(),
-                       new IdentityResource(){ Name="roles", DisplayName="Roles", Description="Kullanıcı rolleri", UserClaims=new []{ "role"} }
+                       new IdentityResource(){ Name="roles", DisplayName="Roles", Description="User roles", UserClaims=new []{ "role"} }
                    };
 
         public static IEnumerable<ApiScope> ApiScopes => new ApiScope[]
