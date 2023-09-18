@@ -1,5 +1,6 @@
 using Courses.Services.Discount.Services;
 using Courses.Shared.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using System.IdentityModel.Tokens.Jwt;
@@ -22,7 +23,7 @@ namespace Courses.Services.Discount
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("sub");
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
-                options.Authority = Configuration["IdentityServerURL"];
+                options.Authority = builder.Configuration["IdentityServerURL"];
                 options.Audience = "resource_discount";
                 options.RequireHttpsMetadata = false;
             });
