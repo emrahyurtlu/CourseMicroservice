@@ -16,6 +16,7 @@ namespace Course.IdentityServerZ
             new ApiResource("resource_catalog") {Scopes = { "catalog_fullpermission" }},
             new ApiResource("resource_photo_stock") {Scopes = { "photo_stock_fullpermission" }},
             new ApiResource("resource_basket") {Scopes = { "basket_fullpermission" }},
+            new ApiResource("resource_discount") {Scopes = { "discount_fullpermission" }},
             new ApiResource(IdentityServerConstants.LocalApi.ScopeName),
         };
 
@@ -33,6 +34,7 @@ namespace Course.IdentityServerZ
             new ApiScope("catalog_fullpermission", "Full access for catalog api"),
             new ApiScope("photo_stock_fullpermission", "Full access for photo api"),
             new ApiScope("basket_fullpermission", "Full access for basket api"),
+            new ApiScope("discount_fullpermission", "Full access for discount api"),
             new ApiScope(IdentityServerConstants.LocalApi.ScopeName),
         };
 
@@ -63,6 +65,7 @@ namespace Course.IdentityServerZ
                     "basket_fullpermission",
                     "order_fullpermission",
                     "gateway_fullpermission",
+                    "discount_fullpermission",
                     IdentityServerConstants.StandardScopes.Email,
                     IdentityServerConstants.StandardScopes.OpenId,
                     IdentityServerConstants.StandardScopes.Profile,

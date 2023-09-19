@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Courses.Services.Discount.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class DiscountsController : CustomControllerBase
     {
         private readonly IDiscountService _discountService;
