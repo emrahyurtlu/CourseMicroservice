@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Courses.Services.Order.Domain\Courses.Services.Order.Domain.csproj" />
     <ProjectReference Include="..\Courses.Services.Order.Infrastructure\Courses.Services.Order.Infrastructure.csproj" />
   </ItemGroup>
