@@ -18,6 +18,7 @@ namespace Course.IdentityServerZ
             new ApiResource("resource_basket") {Scopes = { "basket_fullpermission" }},
             new ApiResource("resource_discount") {Scopes = { "discount_fullpermission" }},
             new ApiResource("resource_order") {Scopes = { "order_fullpermission" }},
+            new ApiResource("resource_payment"){Scopes={"payment_fullpermission"}},
             new ApiResource(IdentityServerConstants.LocalApi.ScopeName),
         };
 
@@ -37,6 +38,7 @@ namespace Course.IdentityServerZ
             new ApiScope("basket_fullpermission", "Full access for basket api"),
             new ApiScope("discount_fullpermission", "Full access for discount api"),
             new ApiScope("order_fullpermission", "Full access for order api"),
+            new ApiScope("payment_fullpermission", "Full access for fake payment api"),
             new ApiScope(IdentityServerConstants.LocalApi.ScopeName),
         };
 
@@ -67,7 +69,6 @@ namespace Course.IdentityServerZ
                     "basket_fullpermission",
                     "order_fullpermission",
                     "gateway_fullpermission",
-                    "discount_fullpermission",
                     IdentityServerConstants.StandardScopes.Email,
                     IdentityServerConstants.StandardScopes.OpenId,
                     IdentityServerConstants.StandardScopes.Profile,
@@ -80,14 +81,14 @@ namespace Course.IdentityServerZ
                 AbsoluteRefreshTokenLifetime= (int) (DateTime.Now.AddDays(60)- DateTime.Now).TotalSeconds,
                 RefreshTokenUsage= TokenUsage.ReUse
             },
-            //new Client
-            //{
-            //    ClientName="Token Exchange Client",
-            //    ClientId="TokenExhangeClient",
-            //    ClientSecrets= {new Secret("secret".Sha256())},
-            //    AllowedGrantTypes= new []{ "urn:ietf:params:oauth:grant-type:token-exchange" },
-            //    AllowedScopes={ "discount_fullpermission", "payment_fullpermission", IdentityServerConstants.StandardScopes.OpenId }
-            //},
+            new Client
+            {
+                ClientName="Token Exchange Client",
+                ClientId="TokenExhangeClient",
+                ClientSecrets= {new Secret("secret".Sha256())},
+                AllowedGrantTypes= new []{ "urn:ietf:params:oauth:grant-type:token-exchange" },
+                AllowedScopes={ "discount_fullpermission", "payment_fullpermission", IdentityServerConstants.StandardScopes.OpenId }
+            },
         };
     }
 }
