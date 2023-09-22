@@ -3,6 +3,7 @@ using Courses.Shared.Services;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using System.IdentityModel.Tokens.Jwt;
 
@@ -39,7 +40,10 @@ namespace Course.Services.Order.API
             builder.Services.AddHttpContextAccessor();
             builder.Services.AddScoped<ISharedIdentityService, SharedIdentityService>();
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers(opt =>
+            {
+                opt.Filters.Add(new AuthorizeFilter(requireAuthorizePolicy));
+            });
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
