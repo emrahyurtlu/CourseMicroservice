@@ -21,7 +21,7 @@ namespace Courses.Gateway
             builder.Configuration.AddJsonFile($"configuration.{builder.Environment.EnvironmentName.ToLower()}.json").AddEnvironmentVariables();
 
             // Add services to the container.
-            builder.Services.AddOcelot().AddDelegatingHandler<TokenExhangeDelegateHandler>();
+
 
             builder.Services.AddHttpClient<TokenExhangeDelegateHandler>();
             builder.Services.AddAuthentication().AddJwtBearer("GatewayAuthenticationScheme", options =>
@@ -30,6 +30,8 @@ namespace Courses.Gateway
                 options.Audience = "resource_gateway";
                 options.RequireHttpsMetadata = false;
             });
+
+            builder.Services.AddOcelot().AddDelegatingHandler<TokenExhangeDelegateHandler>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
