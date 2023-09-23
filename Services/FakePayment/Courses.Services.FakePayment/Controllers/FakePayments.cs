@@ -1,11 +1,15 @@
 ﻿using Courses.Services.FakePayment.Models;
+using Courses.Services.Order.Domain.OrderAggregate;
+using Courses.Shared.ControllerBases;
+using Courses.Shared.Models;
+using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Courses.Services.FakePayment.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class FakePaymentsController : CustomBaseController
+    public class FakePaymentsController : CustomControllerBase
     {
         private readonly ISendEndpointProvider _sendEndpointProvider;
 
@@ -42,7 +46,7 @@ namespace Courses.Services.FakePayment.Controllers
 
             await sendEndpoint.Send<CreateOrderMessageCommand>(createOrderMessageCommand);
 
-            return CreateActionResultInstance(Shared.Dtos.Response<NoContent>.Success(200));
+            return CreateActionResultInstance(Shared.Models.Response<NoContent>.Success(200));
         }
     }
 }

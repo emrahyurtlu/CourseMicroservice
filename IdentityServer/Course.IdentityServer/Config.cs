@@ -19,6 +19,7 @@ namespace Course.IdentityServerZ
             new ApiResource("resource_discount") {Scopes = { "discount_fullpermission" }},
             new ApiResource("resource_order") {Scopes = { "order_fullpermission" }},
             new ApiResource("resource_payment"){Scopes={"payment_fullpermission"}},
+            new ApiResource("resource_gateway"){Scopes={"gateway_fullpermission"}},
             new ApiResource(IdentityServerConstants.LocalApi.ScopeName),
         };
 
@@ -39,6 +40,7 @@ namespace Course.IdentityServerZ
             new ApiScope("discount_fullpermission", "Full access for discount api"),
             new ApiScope("order_fullpermission", "Full access for order api"),
             new ApiScope("payment_fullpermission", "Full access for fake payment api"),
+            new ApiScope("gateway_fullpermission", "Full access for fake ocelot api gateway"),
             new ApiScope(IdentityServerConstants.LocalApi.ScopeName),
         };
 
