@@ -1,6 +1,6 @@
 ﻿using Courses.Services.FakePayment.Models;
-using Courses.Services.Order.Domain.OrderAggregate;
 using Courses.Shared.ControllerBases;
+using Courses.Shared.Messages;
 using Courses.Shared.Models;
 using MassTransit;
 using Microsoft.AspNetCore.Mvc;
@@ -35,7 +35,7 @@ namespace Courses.Services.FakePayment.Controllers
 
             paymentDto.Order.OrderItems.ForEach(x =>
             {
-                createOrderMessageCommand.OrderItems.Add(new OrderItem
+                createOrderMessageCommand.OrderItems.Add(new Shared.Messages.OrderItemDto
                 {
                     PictureUrl = x.PictureUrl,
                     Price = x.Price,
