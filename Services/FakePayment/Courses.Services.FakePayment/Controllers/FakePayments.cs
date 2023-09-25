@@ -44,7 +44,7 @@ namespace Courses.Services.FakePayment.Controllers
                 });
             });
 
-            await sendEndpoint.Send<CreateOrderMessageCommand>(createOrderMessageCommand);
+            await sendEndpoint.Send(createOrderMessageCommand);
 
             return CreateActionResultInstance(Shared.Models.Response<NoContent>.Success(200));
         }
