@@ -7,15 +7,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{7E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{2A767A05-D36E-477B-97AF-29DD729304D2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Courses.Services.Catalog", "Services\Catalog\Course.Services.Catalog\Courses.Services.Catalog.csproj", "{4D152E9A-19A5-4F83-820D-36EDB92A632E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Courses.Services.Catalog", "Services\Catalog\Courses.Services.Catalog\Courses.Services.Catalog.csproj", "{4D152E9A-19A5-4F83-820D-36EDB92A632E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{2A2642E4-D6A3-4CF2-8770-AA7D16B66F3D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Courses.Shared", "Shared\Course.Shared\Courses.Shared.csproj", "{52556831-BD87-42CE-B265-CECFAE4E5057}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Courses.Shared", "Shared\Courses.Shared\Courses.Shared.csproj", "{52556831-BD87-42CE-B265-CECFAE4E5057}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityServer", "IdentityServer", "{7F0C2CB6-8622-4EE7-A77B-084F1465E68B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Course.IdentityServer", "IdentityServer\Course.IdentityServer\Course.IdentityServer.csproj", "{ED7FD5CB-274D-4043-8C7A-AEDC13C80964}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Courses.IdentityServer", "IdentityServer\Courses.IdentityServer\Courses.IdentityServer.csproj", "{ED7FD5CB-274D-4043-8C7A-AEDC13C80964}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PhotoStock", "PhotoStock", "{6B7E00AE-C63A-4D32-8BF4-9ADC75F05320}"
 EndProject
@@ -31,7 +31,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Courses.Services.Discount",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Order", "Order", "{209941F3-4DF1-428A-9BEC-A0DF9EE8ACEA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Courses.Services.Order.API", "Services\Order\Course.Services.Order.API\Courses.Services.Order.API.csproj", "{114A8F9A-C79A-462B-93E8-34912DD515B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Courses.Services.Order.API", "Services\Order\Courses.Services.Order.API\Courses.Services.Order.API.csproj", "{114A8F9A-C79A-462B-93E8-34912DD515B7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Courses.Services.Order.Application", "Services\Order\Courses.Services.Order.Application\Courses.Services.Order.Application.csproj", "{CD694C00-4073-49C6-B987-52DD61F4B926}"
 EndProject
@@ -47,7 +47,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Courses.Services.FakePaymen
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateways", "Gateways", "{195904D0-7204-43E1-8980-056808F24BCD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Courses.Gateway", "Gateways\Courses.Gateway\Courses.Gateway.csproj", "{6DF43046-5655-41D6-86A6-7E958E6BC9D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Courses.Gateway", "Gateways\Courses.Gateway\Courses.Gateway.csproj", "{6DF43046-5655-41D6-86A6-7E958E6BC9D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

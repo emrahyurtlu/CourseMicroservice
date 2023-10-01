@@ -51,7 +51,7 @@ services:
     image: gateway_api_image
     build:
       context: .
-      dockerfile: Courses.Gateway/Dockerfile
+      dockerfile: Gateways/Courses.Gateway/Dockerfile
 
 volumes:
   catalogdb_volume:
