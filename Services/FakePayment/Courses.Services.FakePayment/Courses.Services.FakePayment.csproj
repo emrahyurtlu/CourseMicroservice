@@ -17,7 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Shared\Course.Shared\Courses.Shared.csproj" />
     <ProjectReference Include="..\..\..\Shared\Courses.Shared\Courses.Shared.csproj" />
     <ProjectReference Include="..\..\Order\Courses.Services.Order.Application\Courses.Services.Order.Application.csproj" />
   </ItemGroup>
