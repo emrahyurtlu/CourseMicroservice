@@ -37,7 +37,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Courses.Services.Order.Appl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Courses.Services.Order.Domain", "Services\Order\Courses.Services.Order.Domain\Courses.Services.Order.Domain.csproj", "{F3B8851F-F104-47E3-9F64-744D3DBDD7C0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Courses.Services.Order.Domain.Core", "Services\Order\Courses.Services.Order.Core\Courses.Services.Order.Domain.Core.csproj", "{9CDFF7EC-80FD-4E81-BEC3-9711CBF7FFF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Courses.Services.Order.Domain.Core", "Services\Order\Courses.Services.Order.Domain.Core\Courses.Services.Order.Domain.Core.csproj", "{9CDFF7EC-80FD-4E81-BEC3-9711CBF7FFF5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Courses.Services.Order.Infrastructure", "Services\Order\Courses.Services.Order.Infrastructure\Courses.Services.Order.Infrastructure.csproj", "{BA8372F8-5621-4BFD-86C3-63F28935C054}"
 EndProject
