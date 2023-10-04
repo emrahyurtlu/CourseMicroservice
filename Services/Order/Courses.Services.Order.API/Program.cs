@@ -1,5 +1,7 @@
+using Courses.Services.Order.Application.Consumers;
 using Courses.Services.Order.Infrastructure;
 using Courses.Shared.Services;
+using MassTransit;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -17,6 +19,15 @@ namespace Course.Services.Order.API
 
             // Add services to the container.
             var requireAuthorizePolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+            builder.Services.AddControllers(opt =>
+            {
+                opt.Filters.Add(new AuthorizeFilter(requireAuthorizePolicy));
+            });
+
+            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
+
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("sub");
 
             // This settings is for protecting the Catalog microservice by JWT token
@@ -36,19 +47,45 @@ namespace Course.Services.Order.API
                 });
             });
 
-            builder.Services.AddMediatR(typeof(Courses.Services.Order.Application.Handlers.CreateOrderCommandHandler).Assembly);
             builder.Services.AddHttpContextAccessor();
             builder.Services.AddScoped<ISharedIdentityService, SharedIdentityService>();
 
-            builder.Services.AddControllers(opt =>
+            builder.Services.AddMediatR(typeof(Courses.Services.Order.Application.Handlers.CreateOrderCommandHandler).Assembly);
+            builder.Services.AddMassTransit(x =>
             {
-                opt.Filters.Add(new AuthorizeFilter(requireAuthorizePolicy));
+
+                x.AddConsumer<CreateOrderMessageCommandConsumer>();
+                x.AddConsumer<CourseNameChangedEventConsumer>();
+                // Default Port : 5672
+                x.UsingRabbitMq((context, cfg) =>
+                {
+                    cfg.Host(builder.Configuration["RabbitMQUrl"], "/", host =>
+                    {
+                        host.Username("guest");
+                        host.Password("guest");
+                    });
+
+                    cfg.ReceiveEndpoint("create-order-service", e =>
+                    {
+                        e.ConfigureConsumer<CreateOrderMessageCommandConsumer>(context);
+                    });
+                    cfg.ReceiveEndpoint("course-name-changed-event-order-service", e =>
+                    {
+                        e.ConfigureConsumer<CourseNameChangedEventConsumer>(context);
+                    });
+                });
             });
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+
 
             var app = builder.Build();
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var serviceProvider = scope.ServiceProvider;
+                var orderDbContext = serviceProvider.GetRequiredService<OrderDbContext>();
+                orderDbContext.Database.Migrate();
+
+            }
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
