@@ -20,6 +20,8 @@ RUN dotnet restore Services/Order/Courses.Services.Order.API/*.csproj
 
 COPY . .
 
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
+
 RUN dotnet publish Services/Order/Courses.Services.Order.API/*.csproj -c Release -o out
 
 FROM mcr.microsoft.com/dotnet/aspnet:7.0-alpine3.18 as runtime
@@ -27,5 +29,9 @@ FROM mcr.microsoft.com/dotnet/aspnet:7.0-alpine3.18 as runtime
 WORKDIR /app
 
 COPY --from=build /app/out .
+
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
+
+RUN apk add --no-cache icu-libs
 
 ENTRYPOINT [ "dotnet","Courses.Services.Order.API.dll" ]
