@@ -82,3 +82,18 @@ To list all the list related endpoints for OrderAPI, you should open the url bel
 
 To list all the list related endpoints for FakePaymentAPI, you should open the url below in browser:
 > GET http://localhost:5016/swagger/index.html
+
+
+
+To use those endpoints through Ocelot API Gateway all the url's must in the form below:
+> GET http://localhost:5000/services/catalog/{everything}
+
+> GET http://localhost:5000/services/photostock/{everything}
+
+> GET http://localhost:5000/services/basket/{everything}
+
+> GET http://localhost:5000/services/discount/{everything}
+
+> GET http://localhost:5000/services/order/{everything}
+
+> GET http://localhost:5000/services/fakepayment/{everything}
