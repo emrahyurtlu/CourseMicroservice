@@ -1,66 +1,84 @@
+using Courses.Services.Catalog.Dtos;
 using Courses.Services.Catalog.Services;
 using Courses.Services.Catalog.Settings;
+using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.Extensions.Options;
+using System.Reflection;
 
-namespace Courses.Services.Catalog
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+
+builder.Services.AddControllers(opt =>
 {
-    public class Program
+    opt.Filters.Add(new AuthorizeFilter());
+});
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+
+
+builder.Services.AddMassTransit(x =>
+{
+    // Default Port : 5672
+    x.UsingRabbitMq((context, cfg) =>
     {
-        public static void Main(string[] args)
+        cfg.Host(builder.Configuration["RabbitMQUrl"], "/", host =>
         {
-            var builder = WebApplication.CreateBuilder(args);
+            host.Username("guest");
+            host.Password("guest");
+        });
+    });
+});
 
-            // Add services to the container.
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+{
+    options.Authority = builder.Configuration["IdentityServerURL"];
+    options.Audience = "resource_catalog";
+    options.RequireHttpsMetadata = false;
+});
 
-            builder.Services.AddControllers(options =>
-            {
-                // This line adds [Authorize] attribute for all controllers
-                options.Filters.Add(new AuthorizeFilter());
-            });
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
-
-            // Automapper settings
-            builder.Services.AddAutoMapper(typeof(Program));
-
-            // AppSetting Reading
-            builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("DatabaseSettings"));
-            builder.Services.AddSingleton<IDatabaseSettings>(sp => sp.GetRequiredService<Microsoft.Extensions.Options.IOptions<DatabaseSettings>>().Value);
-
-            // Dependency Injection
-            builder.Services.AddScoped<ICategoryService, CategoryService>();
-
-            // This settings is for protecting the Catalog microservice by JWT token
-            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
-            {
-                // This line show that who gives the token
-                options.Authority = builder.Configuration["IdentityServerUrl"];
-                // resource_catalog constant comes from identity server Config class.
-                options.Audience = "resource_catalog";
-                // Since we dont use https, we set this configuration false.
-                // Auth mechanism waits https request
-                // by default if we dont set it
-                options.RequireHttpsMetadata = false;
-            });
-
-            var app = builder.Build();
-
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
-
-            app.UseAuthentication();
-            app.UseAuthorization();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<ICourseService, CourseService>();
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 
-            app.MapControllers();
+builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("DatabaseSettings"));
 
-            app.Run();
-        }
+builder.Services.AddSingleton<IDatabaseSettings>(sp =>
+{
+    return sp.GetRequiredService<IOptions<DatabaseSettings>>().Value;
+});
+
+
+var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var serviceProvider = scope.ServiceProvider;
+
+    var categoryService = serviceProvider.GetRequiredService<ICategoryService>();
+
+    if (!(await categoryService.GetAllAsync()).Data.Any())
+    {
+        await categoryService.CreateAsync(new CategoryDto { Name = "Asp.net Core Kursu" });
+        await categoryService.CreateAsync(new CategoryDto { Name = "Asp.net Core API Kursu" });
     }
 }
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.Run();

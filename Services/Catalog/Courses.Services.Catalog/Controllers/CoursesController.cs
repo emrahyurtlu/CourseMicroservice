@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Courses.Services.Catalog.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class CoursesController : CustomControllerBase
     {
@@ -32,6 +32,7 @@ namespace Courses.Services.Catalog.Controllers
             return CreateActionResultInstance(response);
         }
 
+        [HttpGet]
         [Route("/api/[controller]/GetAllByUserId/{userId}")]
         public async Task<IActionResult> GetAllByUserId(string userId)
         {

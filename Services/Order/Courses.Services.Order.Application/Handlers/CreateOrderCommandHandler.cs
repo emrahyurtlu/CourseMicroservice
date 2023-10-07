@@ -1,8 +1,8 @@
 ﻿using Courses.Services.Order.Application.Commands;
 using Courses.Services.Order.Application.Dtos;
 using Courses.Services.Order.Domain.OrderAggregate;
-using Courses.Services.Order.Infrastructure;
 using Courses.Shared.Models;
+using FreeCourse.Services.Order.Infrastructure;
 using MediatR;
 
 namespace Courses.Services.Order.Application.Handlers

@@ -1,5 +1,5 @@
-﻿using Courses.Services.Order.Infrastructure;
-using Courses.Shared.Messages;
+﻿using Courses.Shared.Messages;
+using FreeCourse.Services.Order.Infrastructure;
 using MassTransit;
 
 namespace Courses.Services.Order.Application.Consumers

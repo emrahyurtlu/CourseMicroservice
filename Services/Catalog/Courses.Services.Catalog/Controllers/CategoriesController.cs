@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Courses.Services.Catalog.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class CategoriesController : CustomControllerBase
     {

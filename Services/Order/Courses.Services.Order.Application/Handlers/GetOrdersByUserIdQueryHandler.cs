@@ -1,8 +1,8 @@
 ﻿using Courses.Services.Order.Application.Dtos;
 using Courses.Services.Order.Application.Mapping;
 using Courses.Services.Order.Application.Queries;
-using Courses.Services.Order.Infrastructure;
 using Courses.Shared.Models;
+using FreeCourse.Services.Order.Infrastructure;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
