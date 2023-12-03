@@ -1,0 +1,1025 @@
+{
+	"info": {
+		"_postman_id": "a13bd05e-bb39-43e3-939a-2adf21c5a4d4",
+		"name": "CourseMicroservices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "52408"
+	},
+	"item": [
+		{
+			"name": "IdentityServer.Api",
+			"item": [
+				{
+					"name": "GetPublicToken",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_id",
+									"value": "WebMvcClient",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "secret",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5001/connect/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPrivateToken",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_id",
+									"value": "WebMvcClientForUser",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "secret",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "test_user@domain.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Password12*",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5001/connect/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SignUpEndpoint",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"UserName\":\"hasanozdemir\",\r\n    \"Email\":\"hasanozdemir@live.com\",\r\n    \"City\":\"Ankara\",\r\n    \"Password\":\"Password12*\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/user/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"user",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ConnectWithPublicToken",
+			"item": [
+				{
+					"name": "Catalog.Api",
+					"item": [
+						{
+							"name": "Catalog",
+							"item": [
+								{
+									"name": "GetById",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "oauth2",
+											"oauth2": [
+												{
+													"key": "addTokenTo",
+													"value": "header",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "http://localhost:5000/services/catalog/categories/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "5000",
+											"path": [
+												"services",
+												"catalog",
+												"categories",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetAll",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "oauth2",
+											"oauth2": [
+												{
+													"key": "addTokenTo",
+													"value": "header",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "http://localhost:5000/services/catalog/categories/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "5000",
+											"path": [
+												"services",
+												"catalog",
+												"categories",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create",
+									"request": {
+										"auth": {
+											"type": "oauth2",
+											"oauth2": [
+												{
+													"key": "addTokenTo",
+													"value": "header",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"name\": \"string\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:5000/services/catalog/categories/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "5000",
+											"path": [
+												"services",
+												"catalog",
+												"categories",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Courses",
+							"item": [
+								{
+									"name": "GetAll",
+									"request": {
+										"auth": {
+											"type": "oauth2",
+											"oauth2": [
+												{
+													"key": "addTokenTo",
+													"value": "header",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:5000/services/catalog/courses",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "5000",
+											"path": [
+												"services",
+												"catalog",
+												"courses"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetById",
+									"request": {
+										"auth": {
+											"type": "oauth2",
+											"oauth2": [
+												{
+													"key": "addTokenTo",
+													"value": "header",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:5000/services/catalog/courses/5",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "5000",
+											"path": [
+												"services",
+												"catalog",
+												"courses",
+												"5"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetAllByUserId",
+									"request": {
+										"auth": {
+											"type": "oauth2",
+											"oauth2": [
+												{
+													"key": "addTokenTo",
+													"value": "header",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:5000/services/catalog/courses/GetAllByUserId/5",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "5000",
+											"path": [
+												"services",
+												"catalog",
+												"courses",
+												"GetAllByUserId",
+												"5"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create",
+									"request": {
+										"auth": {
+											"type": "oauth2",
+											"oauth2": [
+												{
+													"key": "addTokenTo",
+													"value": "header",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"categoryId\": \"string\",\r\n  \"userId\": \"string\",\r\n  \"name\": \"string\",\r\n  \"description\": \"string\",\r\n  \"price\": 0,\r\n  \"feature\": {\r\n    \"duration\": 0\r\n  },\r\n  \"picture\": \"string\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:5000/services/catalog/courses/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "5000",
+											"path": [
+												"services",
+												"catalog",
+												"courses",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update",
+									"request": {
+										"auth": {
+											"type": "oauth2",
+											"oauth2": [
+												{
+													"key": "addTokenTo",
+													"value": "header",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"id\": \"string\",\r\n  \"categoryId\": \"string\",\r\n  \"userId\": \"string\",\r\n  \"name\": \"string\",\r\n  \"description\": \"string\",\r\n  \"price\": 0,\r\n  \"feature\": {\r\n    \"duration\": 0\r\n  },\r\n  \"picture\": \"string\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:5000/services/catalog/courses/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "5000",
+											"path": [
+												"services",
+												"catalog",
+												"courses",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete",
+									"request": {
+										"auth": {
+											"type": "oauth2",
+											"oauth2": [
+												{
+													"key": "addTokenTo",
+													"value": "header",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:5000/services/catalog/courses?id=5",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "5000",
+											"path": [
+												"services",
+												"catalog",
+												"courses"
+											],
+											"query": [
+												{
+													"key": "id",
+													"value": "5"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Photostock.Api",
+					"item": [
+						{
+							"name": "UploadPhoto",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "photo",
+											"value": "file_url.jpg",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/services/photos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"services",
+										"photos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeletePhoto",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/services/photos?photoUrl=sasaf-safasdfasf-safasdf-dfdfdf.jpg",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"services",
+										"photos"
+									],
+									"query": [
+										{
+											"key": "photoUrl",
+											"value": "sasaf-safasdfasf-safasdf-dfdfdf.jpg"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "ConnectWithPrivateToken",
+			"item": [
+				{
+					"name": "Basket.Api",
+					"item": [
+						{
+							"name": "GetAllBaskets",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/services/baskets",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"services",
+										"baskets"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateNewBasket",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"UserId\": \"1\",\r\n    \"DiscountCode\": \"PRDYM-2023\",\r\n    \"DiscountRate\": 20,\r\n    \"basketItems\": [\r\n        {\r\n            \"Quantity\": 1,\r\n            \"CourseId\": \"sdfsfgsdgdsf\",\r\n            \"CourseName\": \"My course name\",\r\n            \"Price\": 25.00\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/services/baskets",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"services",
+										"baskets"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteBasket",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"UserId\": \"1\",\r\n    \"DiscountCode\": \"PRDYM-2023\",\r\n    \"DiscountRate\": 20,\r\n    \"basketItems\": [\r\n        {\r\n            \"Quantity\": 1,\r\n            \"CourseId\": \"sdfsfgsdgdsf\",\r\n            \"CourseName\": \"My course name\",\r\n            \"Price\": 25.00\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/services/baskets",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"services",
+										"baskets"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Order.Api",
+					"item": [
+						{
+							"name": "GetOrders",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5001/services/order",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"services",
+										"order"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateOrder",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"buyerId\": \"string\",\r\n  \"orderItems\": [\r\n    {\r\n      \"productId\": \"string\",\r\n      \"productName\": \"string\",\r\n      \"pictureUrl\": \"string\",\r\n      \"price\": 0\r\n    }\r\n  ],\r\n  \"address\": {\r\n    \"province\": \"string\",\r\n    \"district\": \"string\",\r\n    \"street\": \"string\",\r\n    \"zipCode\": \"string\",\r\n    \"line\": \"string\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5001/services/order",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"services",
+										"order"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Payment.Api",
+					"item": [
+						{
+							"name": "GetPayment",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"CardName\": \"dsfgsdgds\",\r\n    \"CardNumber\": \"8888444455555552\",\r\n    \"Expiration\":\"2025-12-12\",\r\n    \"CVV\": \"444\",\r\n    \"TotalPrice\": 125,\r\n    \"Order\": {\r\n        \"BuyerId\": \"1\",\r\n        \"OrderItems\": [\r\n            {\r\n                \"ProductId\": \"1\",\r\n                \"ProductName\": \"My Product\",\r\n                \"PictureUrl\": \"\",\r\n                \"Price\": 25\r\n            },\r\n            {\r\n                \"ProductId\": \"2\",\r\n                \"ProductName\": \"My Product 2\",\r\n                \"PictureUrl\": \"\",\r\n                \"Price\": 215\r\n            }\r\n        ],\r\n        \"Address\": {\r\n            \"Province\": \"Ankara\",\r\n            \"District\": \"District\",\r\n            \"Street\": \"Street\",\r\n            \"ZipCode\": \"ZipCode\",\r\n            \"Line\": \"Line\"\r\n        }\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/services/fakepayment",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"services",
+										"fakepayment"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Discount.Api",
+					"item": [
+						{
+							"name": "GetAll",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/services/discount",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"services",
+										"discount"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetById",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/services/discount/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"services",
+										"discount",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteCoupon",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/services/discount?id=4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"services",
+										"discount"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetByCode",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/services/discount/GetByCode?code=DSCNT-2023",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"services",
+										"discount",
+										"GetByCode"
+									],
+									"query": [
+										{
+											"key": "code",
+											"value": "DSCNT-2023"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateCoupon",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"UserId\": \"1\",\r\n    \"Rate\": 10,\r\n    \"Code\": \"TST-2023\",\r\n    \"CreatedTime\":\"2023-11-27\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/services/discount/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"services",
+										"discount",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "PrivateToken",
+			"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjUyNzU1M0E4MjAwNkY0NzVDMTE4MDVERDg2NEVCRjU1IiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE3MDEwMzUyNjQsImV4cCI6MTcwMTAzODg2NCwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1MDAxIiwiYXVkIjpbInJlc291cmNlX2Jhc2tldCIsInJlc291cmNlX2NhdGFsb2ciLCJyZXNvdXJjZV9nYXRld2F5IiwicmVzb3VyY2VfcGhvdG9fc3RvY2siLCJodHRwOi8vbG9jYWxob3N0OjUwMDEvcmVzb3VyY2VzIl0sImNsaWVudF9pZCI6IldlYk12Y0NsaWVudCIsImp0aSI6IjI0Q0UwNDMyQzg4NzcwQjI4Q0FERTMwNjlFMjk3RDcwIiwiaWF0IjoxNzAxMDM1MjY0LCJzY29wZSI6WyJiYXNrZXRfZnVsbHBlcm1pc3Npb24iLCJjYXRhbG9nX2Z1bGxwZXJtaXNzaW9uIiwiZ2F0ZXdheV9mdWxscGVybWlzc2lvbiIsIklkZW50aXR5U2VydmVyQXBpIiwicGhvdG9fc3RvY2tfZnVsbHBlcm1pc3Npb24iXX0.vlhBhRzYeL0IMwfTZn9pr2FxRD2oQYRHdr92o-lmXD847GjjGumwHZgBUYDw9Y5kfy3Bx5H33ajE_0zbU8i8T-dx2Re2MyF4dHujFV_jXRCH4Ky5NUcMm9reUThKRrjWNsVcqgbUFewDQ3DtcPPCupLABp7kaPD1RtFVtutOsW9O4ux6EQZ5tJGUzVnW1ZkE-VACOB81QXLKkOr2Qpkx4VTV3WZduyfWWH0BJ7E1RbtyhZ7S3_P2tPfFRFgYz0P704quFGGjdzcowTRhXERK6ZInqiRXV-myDD1dlrsvG4HX8zL8DgZ4eS80foAcDxc4_gsFVgZo4KydLaetTV24JA"
+		},
+		{
+			"key": "PublicToken",
+			"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjUyNzU1M0E4MjAwNkY0NzVDMTE4MDVERDg2NEVCRjU1IiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE3MDEwMzM5NjIsImV4cCI6MTcwMTAzNzU2MiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1MDAxIiwiYXVkIjpbInJlc291cmNlX2Jhc2tldCIsInJlc291cmNlX2NhdGFsb2ciLCJyZXNvdXJjZV9nYXRld2F5IiwicmVzb3VyY2VfcGhvdG9fc3RvY2siLCJodHRwOi8vbG9jYWxob3N0OjUwMDEvcmVzb3VyY2VzIl0sImNsaWVudF9pZCI6IldlYk12Y0NsaWVudCIsImp0aSI6IkU3NzA2M0MyREZFOTg0NDlFNjI4RUNFRTkxOERBN0JDIiwiaWF0IjoxNzAxMDMzOTYyLCJzY29wZSI6WyJiYXNrZXRfZnVsbHBlcm1pc3Npb24iLCJjYXRhbG9nX2Z1bGxwZXJtaXNzaW9uIiwiZ2F0ZXdheV9mdWxscGVybWlzc2lvbiIsIklkZW50aXR5U2VydmVyQXBpIiwicGhvdG9fc3RvY2tfZnVsbHBlcm1pc3Npb24iXX0.VWU-TLWVaW-7uKiD3vBHP1M4Zdczi2jeOO_zLWWItSAtrrNAnU_i_3VZ_3n528Q-dY_SR3zAeO_egXAOQaYIel88FPB_7ob3EZeCJ9x55Z2mKDzI_D4WfPJkpVlpt0OzDw4rIn_mUwvdMDKeB2kD-29F-y7G-tSqGOb8-rvHSdjDlzEllhIrpTpTupLKwEVCr7rPgEQ54DHLB-grkhj7JQaiPfI0HlgoADpJpeQsCGeRAI7d-7olxYvjH5uu3BzCgfgrV7LhEH9DRnVr0IhhWbR-rQYCCKVUJtwBCU_at8BmvLv7PqiEaSG8jg13hEKoyaNzcHuD4by69OuIotqwJA"
+		}
+	]
+}

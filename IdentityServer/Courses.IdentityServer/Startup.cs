@@ -1,11 +1,9 @@
 ﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
-
 using Course.IdentityServer.Data;
 using Course.IdentityServer.Models;
 using Course.IdentityServer.Services;
-using Course.IdentityServerZ;
 using IdentityServer4;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -15,7 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Course.IdentityServer
+namespace FreeCourse.IdentityServer
 {
     public class Startup
     {
@@ -52,7 +50,7 @@ namespace Course.IdentityServer
                 options.EmitStaticAudienceClaim = true;
             })
                 .AddInMemoryIdentityResources(Config.IdentityResources)
-                .AddInMemoryApiResources(Config.ApiResources)
+               .AddInMemoryApiResources(Config.ApiResources)
                 .AddInMemoryApiScopes(Config.ApiScopes)
                 .AddInMemoryClients(Config.Clients)
                 .AddAspNetIdentity<ApplicationUser>();
@@ -94,7 +92,6 @@ namespace Course.IdentityServer
             {
                 endpoints.MapDefaultControllerRoute();
             });
-
         }
     }
 }
